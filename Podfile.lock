@@ -10,6 +10,9 @@ PODS:
     - RxSwift (~> 4.0)
   - Nimble (8.1.2)
   - Quick (3.0.0)
+  - R.swift (5.2.2):
+    - R.swift.Library (~> 5.2.0)
+  - R.swift.Library (5.2.0)
   - Result (4.1.0)
   - RxBlocking (4.5.0):
     - RxSwift (>= 4.4.2, ~> 4.4)
@@ -25,6 +28,7 @@ DEPENDENCIES:
   - Moya/RxSwift
   - Nimble
   - Quick
+  - R.swift
   - RxBlocking
   - RxCocoa
   - RxSwift
@@ -37,6 +41,8 @@ SPEC REPOS:
     - Moya
     - Nimble
     - Quick
+    - R.swift
+    - R.swift.Library
     - Result
     - RxBlocking
     - RxCocoa
@@ -49,6 +55,8 @@ SPEC CHECKSUMS:
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   Nimble: 3864815b4703c7ebffba875973c70e854489fbae
   Quick: 6d9559f40647bc4d510103842ef2fdd882d753e2
+  R.swift: 7c52cdc57a66840ffe6cbd8a823d732059d42a32
+  R.swift.Library: 5ba4f1631300caf9a4d890186930da85d540769d
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxBlocking: 79413e4d916f44bb3e113c5b2cc059e36fe58910
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
@@ -56,6 +64,6 @@ SPEC CHECKSUMS:
   RxTest: 3ccb66bfbace0bf7df1c43a7c75d046f8ce60372
   SwiftyBeaver: b8239f6bfe9e1ea3303e6139abc8c24228081d84
 
-PODFILE CHECKSUM: e5ac629398f4bac0c2b54bc9be42c95d4a5af091
+PODFILE CHECKSUM: b5e3842b857ef5c427c1c1a6d4d9c04ceb5d1078
 
 COCOAPODS: 1.8.4

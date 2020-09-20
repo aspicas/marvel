@@ -13,6 +13,7 @@ def app_pods
   pod 'Moya'
   pod 'Moya/RxSwift'
   pod 'SwiftyBeaver'
+  pod 'R.swift'
 end
 
 target 'marvel' do
