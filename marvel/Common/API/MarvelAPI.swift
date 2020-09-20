@@ -13,6 +13,8 @@ public enum MarvelAPI {
     case getCaracters(_ limit: Double, _ offset: Double)
 }
 
+let marvelAPI = MoyaProvider<MarvelAPI>(plugins: [NetworkLoggerPlugin(verbose: true)])
+
 extension MarvelAPI: TargetType {
     public var baseURL: URL { return URL(string: "http://gateway.marvel.com/v1/public")! }
     

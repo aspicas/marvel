@@ -28,7 +28,7 @@ class MarvelDataSourceTests: XCTestCase {
             case .success(let info):
                 expect(info.data.results.count > 0).to(equal(true), description: "Service is full")
             case .failure(let error):
-                expect(error.errorCode == 200).to(equal(true), description: error.errorDescription)
+                expect(error.localizedDescription.isEmpty).to(equal(true), description: error.localizedDescription)
             }
         }
     }

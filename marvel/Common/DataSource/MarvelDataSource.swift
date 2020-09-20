@@ -8,14 +8,14 @@
 import Moya
 import RxSwift
 
-class MarvelDataSource {
+class MarvelDataSource: MarvelDataSourceInterface {
     private let _marvelAPI: MoyaProvider<MarvelAPI>
     
     init(marvelAPI: MoyaProvider<MarvelAPI>) {
         _marvelAPI = marvelAPI
     }
     
-    func getCharacters(limit: Int, offset: Int, completionHandler: @escaping (Result<CharacterInfo, MoyaError>) -> Void) {
+    func getCharacters(limit: Int, offset: Int, completionHandler: @escaping (Result<CharacterInfo, Error>) -> Void) {
         _marvelAPI.request(.getCaracters(10, 0)) { result in
             switch result{
             case .success(let response):
@@ -24,7 +24,7 @@ class MarvelDataSource {
                     let characterInfo = try! JSONDecoder().decode(CharacterInfo.self, from: json)
                     completionHandler(.success(characterInfo))
                 } catch {
-                    completionHandler(.failure(.jsonMapping(response)))
+                    completionHandler(.failure(MoyaError.jsonMapping(response)))
                 }
                 break
             case .failure(let error):
