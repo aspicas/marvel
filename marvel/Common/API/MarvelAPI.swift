@@ -33,9 +33,7 @@ extension MarvelAPI: TargetType {
     public var sampleData: Data {
         switch self {
         case .getCaracters:
-            return stubbedResponse("Characters")
-        default:
-            break
+            return stubbedResponse(R.file.charactersJson.name)
         }
         return Data()
     }

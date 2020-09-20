@@ -20,6 +20,7 @@
 		7B2F2C9D2516795100D7313D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2F2C9B2516795100D7313D /* LaunchScreen.storyboard */; };
 		7B2F2CA82516795100D7313D /* marvelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2F2CA72516795100D7313D /* marvelTests.swift */; };
 		7B2F2CB32516795100D7313D /* marvelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2F2CB22516795100D7313D /* marvelUITests.swift */; };
+		7B8B3FFD2517DAC100AAE12D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B3FFC2517DAC100AAE12D /* R.generated.swift */; };
 		7BBA6D782516B28D007F826F /* MarvelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBA6D772516B28D007F826F /* MarvelAPI.swift */; };
 		7BBA6DA3251769CC007F826F /* MarvelDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBA6DA2251769CC007F826F /* MarvelDataSource.swift */; };
 		7BBA6DAC251773F6007F826F /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBA6DAB251773F6007F826F /* String+MD5.swift */; };
@@ -65,6 +66,7 @@
 		7B2F2CAE2516795100D7313D /* marvelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = marvelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2F2CB22516795100D7313D /* marvelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = marvelUITests.swift; sourceTree = "<group>"; };
 		7B2F2CB42516795100D7313D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B8B3FFC2517DAC100AAE12D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		7BBA6D772516B28D007F826F /* MarvelAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAPI.swift; sourceTree = "<group>"; };
 		7BBA6DA2251769CC007F826F /* MarvelDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDataSource.swift; sourceTree = "<group>"; };
 		7BBA6DAB251773F6007F826F /* String+MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				7B2F2C962516794F00D7313D /* Main.storyboard */,
 				7B2F2C992516795100D7313D /* Assets.xcassets */,
 				7B2F2C9B2516795100D7313D /* LaunchScreen.storyboard */,
+				7B8B3FFC2517DAC100AAE12D /* R.generated.swift */,
 				7B2F2C9E2516795100D7313D /* Info.plist */,
 			);
 			path = Resources;
@@ -283,6 +286,7 @@
 			buildConfigurationList = 7B2F2CB72516795100D7313D /* Build configuration list for PBXNativeTarget "marvel" */;
 			buildPhases = (
 				65F5F2CAF06F22E46DF6D463 /* [CP] Check Pods Manifest.lock */,
+				7B8B3FF82517D98E00AAE12D /* ShellScript */,
 				7B2F2C892516794F00D7313D /* Sources */,
 				7B2F2C8A2516794F00D7313D /* Frameworks */,
 				7B2F2C8B2516794F00D7313D /* Resources */,
@@ -487,6 +491,25 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7B8B3FF82517D98E00AAE12D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 		B9382C35939ABB1C1680D42F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -536,6 +559,7 @@
 				7B17D8F72517B33600EBAD97 /* CharacterInfo.swift in Sources */,
 				7BBA6DA3251769CC007F826F /* MarvelDataSource.swift in Sources */,
 				7BBA6DAC251773F6007F826F /* String+MD5.swift in Sources */,
+				7B8B3FFD2517DAC100AAE12D /* R.generated.swift in Sources */,
 				7B2F2C952516794F00D7313D /* ViewController.swift in Sources */,
 				7B2F2C912516794F00D7313D /* AppDelegate.swift in Sources */,
 				7B2F2C932516794F00D7313D /* SceneDelegate.swift in Sources */,
