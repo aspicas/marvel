@@ -22,7 +22,7 @@ class CharacterListViewController: UIViewController, CharacterListViewInterface 
         super.viewDidLoad()
         navigationItem.title = "Marvel"
         navigationController?.navigationBar.barTintColor = R.color.letterSecond()
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: R.color.letterPrimary()!]
         collectionView.delegate = self
         collectionView.dataSource = self
         registerCells()

@@ -18,7 +18,10 @@ class DetailViewController: UIViewController, DetailViewInterface {
     
     private func setScreenData(character: CharacterData?) {
         guard let character = character else { return }
-        
+        navigationItem.title = character.name
+        navigationController?.navigationBar.barTintColor = R.color.letterSecond()
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: R.color.letterPrimary()!]
+        navigationController?.navigationBar.tintColor = R.color.letterPrimary()
     }
     
 }

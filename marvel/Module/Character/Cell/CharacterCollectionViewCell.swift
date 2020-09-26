@@ -43,8 +43,8 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     private func settingCell() {
         self.layer.cornerRadius = 20
         self.layer.masksToBounds = true
-        self.nameLabel.layer.shadowOffset = CGSize(width: 3, height: 3)
-        self.nameLabel.layer.shadowOpacity = 0.8
+        self.nameLabel.layer.shadowOffset = CGSize(width: 4, height: 4)
+        self.nameLabel.layer.shadowOpacity = 0.7
         self.nameLabel.layer.shadowRadius = 2
         self.nameLabel.shadowColor = R.color.backgroundSecond()
     }
