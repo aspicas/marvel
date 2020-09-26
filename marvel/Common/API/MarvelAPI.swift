@@ -10,7 +10,7 @@ import Moya
 public enum MarvelAPI {
     static private let publicKey: String = "aac3982a64c66c01a86fadce995cb1dc"
     static private let privateKey: String = "f21e5f8afe5f1896b461f2fb58ba50117744d49f"
-    case getCaracters(_ limit: Double, _ offset: Double)
+    case getCaracters(limit: Int, offset: Int)
 }
 
 let marvelAPI = MoyaProvider<MarvelAPI>(plugins: [NetworkLoggerPlugin(verbose: true)])

@@ -14,7 +14,7 @@ struct CharacterInfo: Codable {
 
 // MARK: - DataClass
 struct DataClass: Codable {
-    var offset, limit, total: Int
+    var offset, limit, total, count: Int
     var results: [CharacterData]
 }
 
@@ -29,6 +29,10 @@ struct CharacterData: Codable {
     var events: Comics
     var urls: [URLElement]
 
+    var imageUrl: String {
+        get { return "\(thumbnail.path).\(thumbnail.thumbnailExtension.rawValue)"}
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id, name
         case resultDescription = "description"
@@ -62,19 +66,7 @@ struct Stories: Codable {
 struct StoriesItem: Codable {
     var resourceURI: String
     var name: String
-    var type: ItemType
-}
-
-enum ItemType: String, Codable {
-    case cover = "cover"
-    case empty = ""
-    case interiorStory = "interiorStory"
-    case letters = "letters"
-    case pinup = "pinup"
-    case promo = "promo"
-    case recap = "recap"
-    case textArticle = "text article"
-    case textFeature = "text feature"
+    var type: String
 }
 
 // MARK: - Thumbnail
@@ -91,6 +83,7 @@ struct Thumbnail: Codable {
 enum Extension: String, Codable {
     case jpg = "jpg"
     case png = "png"
+    case gif = "gif"
 }
 
 // MARK: - URLElement

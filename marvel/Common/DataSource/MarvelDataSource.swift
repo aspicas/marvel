@@ -16,7 +16,7 @@ class MarvelDataSource: MarvelDataSourceInterface {
     }
     
     func getCharacters(limit: Int, offset: Int, completionHandler: @escaping (Result<CharacterInfo, Error>) -> Void) {
-        _marvelAPI.request(.getCaracters(10, 0)) { result in
+        _marvelAPI.request(.getCaracters(limit: limit, offset: offset)) { result in
             switch result{
             case .success(let response):
                 do {

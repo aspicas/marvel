@@ -6,21 +6,80 @@
 //
 
 import UIKit
+import RxSwift
 
-class CharacterListViewController: UIViewController {
-
+class CharacterListViewController: UIViewController, CharacterListViewInterface {
+    
     @IBOutlet weak var collectionView: UICollectionView!
-    private var mock: [Int] = [1,2,3,4,5,6,7,8,9]
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
+    private var characters: [CharacterData] = []
+    private let disposeBag = DisposeBag()
+    
+    var presenter: CharacterListPresenterInterface?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
         registerCells()
+        presenter?.viewSource
+            .debug("Character List Source")
+            .drive(onNext: { [weak self] dataState in
+                switch dataState {
+                case .empty:
+                    self?.deactiveIndicator()
+                case .success(let data):
+                    self?.addCharacter(data)
+                    self?.deactiveIndicator()
+                case .loading:
+                    self?.activeIndicator()
+                case .error(let error):
+                    self?.show(error: error)
+                    self?.deactiveIndicator()
+                }
+            }, onCompleted: {
+                print("Completed")
+            }).disposed(by: disposeBag)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        presenter?.getCharacterData()
     }
     
     private func registerCells() {
         collectionView.register(R.nib.characterCollectionViewCell)
+    }
+    
+    private func addCharacter(_ data: [CharacterData]) {
+        characters.append(contentsOf: data)
+        let indexPath = IndexPath(row: characters.count - 1, section: 0)
+        collectionView.insertItems(at: [indexPath])
+    }
+    
+    private func show(error: Error) {
+        let alertController = UIAlertController(title: "Something went wrong",
+                                                message: error.localizedDescription,
+                                                preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(cancelAction)
+        
+        let retryAction = UIAlertAction(title: "Retry", style: .default) { _ in
+            self.presenter?.getCharacterData()
+        }
+        alertController.addAction(retryAction)
+        
+        present(alertController, animated: true)
+    }
+    
+    private func activeIndicator() {
+        activityIndicatorView.startAnimating()
+        activityIndicatorView.isHidden = false
+    }
+    
+    private func deactiveIndicator() {
+        activityIndicatorView.stopAnimating()
+        activityIndicatorView.isHidden = true
     }
 
 }
@@ -29,7 +88,7 @@ extension CharacterListViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return mock.count
+        return characters.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -37,17 +96,21 @@ extension CharacterListViewController: UICollectionViewDelegate, UICollectionVie
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: R.nib.characterCollectionViewCell.identifier,
             for: indexPath) as! CharacterCollectionViewCell
-        
-        cell.label.text = "\(mock[indexPath.row])"
-        cell.backgroundColor = indexPath.row % 3 == 0 ? .cyan : .blue
-        
-        cell.contentView.layer.cornerRadius = 20
-        cell.contentView.layer.masksToBounds = true
-        
-        cell.layer.cornerRadius = 20
-        cell.layer.masksToBounds = true
+
+        let character = characters[indexPath.row]
+
+        cell.name = character.name
+        cell.imageUrl = character.imageUrl
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == characters.count - 4 {
+            DispatchQueue.global(qos: .background).async {
+                self.presenter?.getCharacterData()
+            }
+        }
     }
 }
 
@@ -55,9 +118,9 @@ extension CharacterListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let flowlayout = collectionViewLayout as? UICollectionViewFlowLayout
-        let space: CGFloat = (flowlayout?.minimumInteritemSpacing ?? 0.0) + (flowlayout?.sectionInset.left ?? 0.0) + (flowlayout?.sectionInset.right ?? 0.0)
-        let size: CGFloat = (self.collectionView.frame.size.width - space) / 2.0
+        
+        let spaceOccupedOnScreen:CGFloat = 0.4822
+        let size: CGFloat = (self.collectionView.frame.size.width*spaceOccupedOnScreen)
         return CGSize(width: size, height: size)
     }
 }

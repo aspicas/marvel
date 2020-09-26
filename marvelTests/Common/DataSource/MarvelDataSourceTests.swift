@@ -12,15 +12,8 @@ import Moya
 
 class MarvelDataSourceTests: XCTestCase {
 
-    private var dataSource = MarvelDataSource(marvelAPI: MoyaProvider<MarvelAPI>(stubClosure: MoyaProvider.immediatelyStub, plugins: [NetworkLoggerPlugin(verbose: true)]))
-    
-    override class func setUp() {
-
-    }
-
-    override func tearDownWithError() throws {
-        
-    }
+    private var dataSource = MarvelDataSource(marvelAPI: MoyaProvider<MarvelAPI>(stubClosure: MoyaProvider.immediatelyStub,
+                                                                                 plugins: [NetworkLoggerPlugin(verbose: true)]))
 
     func testDataSource_ServiceCall_GetRightData() throws {
         dataSource.getCharacters(limit: 2, offset: 0) { result in
