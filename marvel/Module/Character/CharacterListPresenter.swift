@@ -47,7 +47,7 @@ class CharacterListPresenter: CharacterListPresenterInterface {
     }
     
     func selectedCell(character: CharacterData) {
-        
+        _wireframe.goToDetails(character: character)
     }
     
     

@@ -31,5 +31,5 @@ protocol CharacterListInteractorInterface: class {
 
 protocol CharacterListWireframeInterface: class {
     static func createModule(_ view: UIViewController?) -> UIViewController
-    func goToDetails()
+    func goToDetails(character: CharacterData)
 }

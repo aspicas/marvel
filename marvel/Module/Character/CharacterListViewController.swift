@@ -20,6 +20,9 @@ class CharacterListViewController: UIViewController, CharacterListViewInterface 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Marvel"
+        navigationController?.navigationBar.barTintColor = R.color.letterSecond()
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         collectionView.delegate = self
         collectionView.dataSource = self
         registerCells()
@@ -111,6 +114,10 @@ extension CharacterListViewController: UICollectionViewDelegate, UICollectionVie
                 self.presenter?.getCharacterData()
             }
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter?.selectedCell(character: characters[indexPath.row])
     }
 }
 

@@ -46,7 +46,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         self.nameLabel.layer.shadowOffset = CGSize(width: 3, height: 3)
         self.nameLabel.layer.shadowOpacity = 0.8
         self.nameLabel.layer.shadowRadius = 2
-        self.nameLabel.shadowColor = UIColor(red: 113, green: 1, blue: 23, alpha: 1)
+        self.nameLabel.shadowColor = R.color.backgroundSecond()
     }
 
 }
