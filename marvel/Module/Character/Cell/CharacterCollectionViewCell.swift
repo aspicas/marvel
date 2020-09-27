@@ -14,14 +14,10 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     var imageUrl : String {
         get {
-            return imageView.image?.accessibilityIdentifier ?? ""
+            return imageView.imageUrl
         }
         set {
-            guard let url = URL(string: newValue),
-                  let data = try? Data(contentsOf: url),
-                  let image = UIImage(data: data) else { return }
-            
-            imageView.image = image
+            imageView.imageUrl = newValue
         }
     }
     

@@ -9,6 +9,9 @@ import UIKit
 
 class DetailViewController: UIViewController, DetailViewInterface {
     
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
     var presenter: DetailPresenterInterface?
     
     override func viewDidLoad() {
@@ -22,6 +25,8 @@ class DetailViewController: UIViewController, DetailViewInterface {
         navigationController?.navigationBar.barTintColor = R.color.letterSecond()
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: R.color.letterPrimary()!]
         navigationController?.navigationBar.tintColor = R.color.letterPrimary()
+        imageView.imageUrl = character.imageUrl
+        descriptionLabel.text = character.resultDescription.isEmpty ? "No description" : character.resultDescription
     }
     
 }

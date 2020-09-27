@@ -3,8 +3,8 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,18 +15,48 @@
                     <view key="view" contentMode="scaleToFill" id="JCF-51-WEC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mk9-Kb-2Eu">
+                                <rect key="frame" x="0.0" y="44" width="414" height="414"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="414" id="Dfe-be-Fcq"/>
+                                    <constraint firstAttribute="width" secondItem="Mk9-Kb-2Eu" secondAttribute="height" multiplier="1:1" id="feH-Gk-fqg"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXZ-Bg-wtH">
+                                <rect key="frame" x="20" y="478" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="LetterPrimary"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="41I-wF-mzH"/>
-                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                        <color key="backgroundColor" name="BackgroundPrimary"/>
+                        <constraints>
+                            <constraint firstItem="41I-wF-mzH" firstAttribute="trailing" secondItem="OXZ-Bg-wtH" secondAttribute="trailing" constant="20" id="7Gc-Fx-dLb"/>
+                            <constraint firstItem="OXZ-Bg-wtH" firstAttribute="top" secondItem="Mk9-Kb-2Eu" secondAttribute="bottom" constant="20" id="G8K-bQ-v2A"/>
+                            <constraint firstItem="Mk9-Kb-2Eu" firstAttribute="trailing" secondItem="41I-wF-mzH" secondAttribute="trailing" id="I9h-0H-nFH"/>
+                            <constraint firstItem="OXZ-Bg-wtH" firstAttribute="leading" secondItem="41I-wF-mzH" secondAttribute="leading" constant="20" id="Qyr-E6-2Fq"/>
+                            <constraint firstItem="Mk9-Kb-2Eu" firstAttribute="top" secondItem="41I-wF-mzH" secondAttribute="top" id="pma-9v-ka5"/>
+                            <constraint firstItem="Mk9-Kb-2Eu" firstAttribute="leading" secondItem="41I-wF-mzH" secondAttribute="leading" id="xsj-Tq-hMp"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="OXZ-Bg-wtH" id="QJI-bq-v7u"/>
+                        <outlet property="imageView" destination="Mk9-Kb-2Eu" id="d7w-oW-9Sn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i9A-Jg-IOB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="97"/>
+            <point key="canvasLocation" x="137.68115942028987" y="96.428571428571431"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <namedColor name="BackgroundPrimary">
+            <color red="0.10588235294117647" green="0.29019607843137257" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LetterPrimary">
+            <color red="0.94901960784313721" green="0.93333333333333335" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

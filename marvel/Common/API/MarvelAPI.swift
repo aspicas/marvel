@@ -37,7 +37,6 @@ extension MarvelAPI: TargetType {
         case .getCaracters:
             return stubbedResponse(R.file.charactersJson.name)
         }
-        return Data()
     }
     
     public var task: Task {
