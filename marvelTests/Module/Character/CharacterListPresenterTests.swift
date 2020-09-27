@@ -24,6 +24,11 @@ class CharacterListPresenterTests: QuickSpec {
             disposeBag = DisposeBag()
         }
         
+        afterEach {
+            presenter = nil
+            disposeBag = nil
+        }
+        
         describe("Get character data") { //1
             context("Characters are fetched successfully") {//1
                 it("Use character with data") {

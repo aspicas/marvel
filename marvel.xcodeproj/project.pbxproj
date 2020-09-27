@@ -39,6 +39,7 @@
 		7BAD3B37251FC86D003BA363 /* EmptyCharacter.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BAD3B36251FC86D003BA363 /* EmptyCharacter.json */; };
 		7BAD3B3F251FD204003BA363 /* BaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD3B3E251FD204003BA363 /* BaseMock.swift */; };
 		7BAD3B44251FD662003BA363 /* CharacterListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD3B43251FD662003BA363 /* CharacterListInteractorTests.swift */; };
+		7BAD3B4A25206E96003BA363 /* MarvelDataSourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD3B4925206E96003BA363 /* MarvelDataSourceMock.swift */; };
 		7BBA6D782516B28D007F826F /* MarvelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBA6D772516B28D007F826F /* MarvelAPI.swift */; };
 		7BBA6DA3251769CC007F826F /* MarvelDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBA6DA2251769CC007F826F /* MarvelDataSource.swift */; };
 		7BBA6DAC251773F6007F826F /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBA6DAB251773F6007F826F /* String+MD5.swift */; };
@@ -103,6 +104,7 @@
 		7BAD3B36251FC86D003BA363 /* EmptyCharacter.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EmptyCharacter.json; sourceTree = "<group>"; };
 		7BAD3B3E251FD204003BA363 /* BaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMock.swift; sourceTree = "<group>"; };
 		7BAD3B43251FD662003BA363 /* CharacterListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListInteractorTests.swift; sourceTree = "<group>"; };
+		7BAD3B4925206E96003BA363 /* MarvelDataSourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDataSourceMock.swift; sourceTree = "<group>"; };
 		7BBA6D772516B28D007F826F /* MarvelAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAPI.swift; sourceTree = "<group>"; };
 		7BBA6DA2251769CC007F826F /* MarvelDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDataSource.swift; sourceTree = "<group>"; };
 		7BBA6DAB251773F6007F826F /* String+MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
@@ -285,6 +287,14 @@
 			path = Character;
 			sourceTree = "<group>";
 		};
+		7BAD3B4825206E75003BA363 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				7BAD3B4925206E96003BA363 /* MarvelDataSourceMock.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 		7BBA6D4F25167B20007F826F /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +372,7 @@
 		7BBA6DBA25177AA6007F826F /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				7BAD3B4825206E75003BA363 /* Mock */,
 				7BBA6DBB25177AD0007F826F /* MarvelDataSourceTests.swift */,
 			);
 			path = DataSource;
@@ -688,6 +699,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BAD3B44251FD662003BA363 /* CharacterListInteractorTests.swift in Sources */,
+				7BAD3B4A25206E96003BA363 /* MarvelDataSourceMock.swift in Sources */,
 				7B6C7B33251FB12800AB97BF /* CharacterListWireframeMock.swift in Sources */,
 				7B6C7B1F251FAE6500AB97BF /* CharacterListPresenterTests.swift in Sources */,
 				7B6C7B28251FB08400AB97BF /* CharacterListInteractorMock.swift in Sources */,
