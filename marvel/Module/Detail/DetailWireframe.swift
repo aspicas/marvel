@@ -9,12 +9,10 @@ import UIKit
 
 class DetailWireframe: DetailWireframeInterface {
     static func createModule(_ view: UIViewController? = nil, character: CharacterData) -> UIViewController {
-        guard let view = view else { return createDefaultModule(character: character) }
         
-        return view
-    }
-    
-    fileprivate static func createDefaultModule(character: CharacterData) -> UIViewController {
+        if let view = view {
+            return view
+        }
         
         guard let view = R.storyboard.detail().instantiateViewController(identifier: "\(DetailViewController.self)") as? DetailViewController
         else { return UIViewController() }
@@ -24,5 +22,4 @@ class DetailWireframe: DetailWireframeInterface {
         
         return view
     }
-    
 }
