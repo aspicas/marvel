@@ -10,13 +10,10 @@ import UIKit
 class CharacterListWireframe: CharacterListWireframeInterface {
     
     static func createModule(_ view: UIViewController? = nil) -> UIViewController {
-        
-        guard let view = view else { return createDefaultModule() }
-        
-        return view
-    }
-    
-    fileprivate static func createDefaultModule() -> UIViewController {
+
+        if let view = view {
+            return view
+        }
         
         guard let view = R.storyboard.characterList()
                 .instantiateViewController(identifier: "\(CharacterListViewController.self)") as? CharacterListViewController

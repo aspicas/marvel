@@ -44,9 +44,7 @@ class CharacterListViewController: UIViewController, CharacterListViewInterface 
             }, onCompleted: {
                 print("Completed")
             }).disposed(by: disposeBag)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        
         presenter?.getCharacterData()
     }
     
